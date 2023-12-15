@@ -1,0 +1,75 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Outfit', sans-serif;
+}
+body{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #212121;
+	color: #fff;
+}
+
+.txt-animado{
+	font-size: 45px;
+	font-weight: 300;
+}
+
+.txt-animado span{
+	position: relative;
+}
+
+/*peseudo elemento criado diretamente no css, criadno um elemento dinãmico antes da tag span */
+.txt-animado span::before{
+	/*conteudo vazio*/
+	content: "";
+	color: #ff007b;
+	animation: palavras 20s infinite;
+}
+
+.txt-animado span::after{
+	content: "";
+	position: absolute;
+	height: 100%;
+	border-left: 2px solid #ff007b;
+	right: -10px;
+	animation: cursor .7s infinite, digita 20s steps(30) infinite;
+	width: calc(100% + 21px);
+	background-color: #212121;
+}
+
+@keyframes digita{
+	10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95%{
+		width: 0;
+	}
+	5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85%{
+		width: calc(100% + 21px);
+	}
+}
+
+@keyframes cursor{
+	0%{
+		border-left: 2px solid #212121;	
+	}
+}
+
+@keyframes palavras{
+	0%,20%{
+		content: "gosta de tecnologia?";
+	}
+	21%,40%{
+		content: "gostou do portfolio?";
+	}
+	41%,60%{
+		content: "quer mais sites assim?";
+	}
+	61%,80%{
+		content: "já me seguiu nas redes sociais?"
+	}
+	81%,100%{
+		content: "tá esperando o que? me segue no GitHub!"
+	}
+}
